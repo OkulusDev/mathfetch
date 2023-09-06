@@ -123,12 +123,12 @@ def get_logo(color: str, local_ip, hostname, os_version, screen_size, uptime) ->
 	hostname_len = len(hostname) + 1
 
 	logo = f'''{color}
-                 _   _               {ANSIColors.CITALIC}{hostname}{bcolors.ENDC}{color}
-                | | | |             {ANSIColors.CBOLD}{"" * hostname_len}{bcolors.ENDC}{color}
- _ __ ___   __ _| |_| |__           {ANSIColors.CITALIC}{local_ip}{bcolors.ENDC}{color}
-| '_ ` _ \\ / _` | __| '_ \\          {ANSIColors.CITALIC}{os_version}{bcolors.ENDC}{color}
-| | | | | | (_| | |_| | | |         {ANSIColors.CITALIC}{screen_size}{bcolors.ENDC}{color}
-|_| |_| |_|\\__,_|\\__|_| |_|         {ANSIColors.CITALIC}{uptime}{bcolors.ENDC}{color}
+                 _   _           {ANSIColors.CITALIC}{hostname}{bcolors.ENDC}{color}
+                | | | |         {ANSIColors.CBOLD}{"" * hostname_len}{bcolors.ENDC}{color}
+ _ __ ___   __ _| |_| |__       {ANSIColors.CITALIC}{local_ip}{bcolors.ENDC}{color}
+| '_ ` _ \\ / _` | __| '_ \\      {ANSIColors.CITALIC}{os_version}{bcolors.ENDC}{color}
+| | | | | | (_| | |_| | | |     {ANSIColors.CITALIC}{screen_size}{bcolors.ENDC}{color}
+|_| |_| |_|\\__,_|\\__|_| |_|     {ANSIColors.CITALIC}{uptime}{bcolors.ENDC}{color}
 		'''
 
 	return logo
