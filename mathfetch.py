@@ -74,7 +74,7 @@ class Fetch:
 			s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 			s.connect(("8.8.8.8", 80))
 
-			return f'󰩟  {s.getsockname()[0]}'
+			return f'{ANSIColors.CRED}󰩟  {s.getsockname()[0]}{bcolors.ENDC}'
 		except Exception as e:
 			return f'{bcolors.FAIL}[!] {e}{bcolors.ENDC}'
 
@@ -86,20 +86,20 @@ class Fetch:
 
 	def os_version(self):
 		try:
-			return f'  {platform.platform()}'
+			return f'{ANSIColors.CVIOLET}  {platform.platform()}{bcolors.ENDC}'
 		except Exception as e:
 			return f'{bcolors.FAIL}[!] {e}{bcolors.ENDC}'
 
 	def uptime(self):
 		try:
-			return f'  {subprocess.check_output(["uptime -p"], shell=True).decode("utf-8").strip().replace("up ", "")}'
+			return f'{ANSIColors.CYELLOW}  {subprocess.check_output(["uptime -p"], shell=True).decode("utf-8").strip().replace("up ", "")}{bcolors.ENDC}'
 		except Exception as e:
 			return f'{bcolors.FAIL}[!] {e}{bcolors.ENDC}'
 
 	def screen_size(self):
 		try:
 			resolution = subprocess.check_output(["xrandr | grep \"*\""], shell=True).decode('utf-8').strip().split(' ')[0]
-			return f'  {resolution}'
+			return f'{ANSIColors.CBLUE}  {resolution}{bcolors.ENDC}'
 		except Exception as e:
 			return f'{bcolors.FAIL}[!] {e}{bcolors.ENDC}'
 
@@ -151,7 +151,7 @@ class Quote:
 			self.quotes.append(quote)
 
 	def get_quote(self):
-		return f'󰍡  󰝗 {choice(self.quotes)} 󰉾'
+		return f'{ANSIColors.CGREEN}󰍡  󰝗 {choice(self.quotes)} 󰉾{bcolors.ENDC}'
 
 
 def get_logo(color: str, local_ip, hostname, os_version, screen_size, uptime, logotype) -> str:
@@ -210,6 +210,7 @@ ___  ___      _   _           {ANSIColors.CITALIC}{hostname}{bcolors.ENDC}{color
   / /|_/ / __ `/ __/ __ \\     {ANSIColors.CITALIC}{local_ip}{bcolors.ENDC}{color}
  / /  / / /_/ / /_/ / / /     {ANSIColors.CITALIC}{os_version}{bcolors.ENDC}{color}
 /_/  /_/\\__,_/\\__/_/ /_/      {ANSIColors.CITALIC}{screen_size}{bcolors.ENDC}{color}
+                              {ANSIColors.CITALIC}{uptime}{bcolors.ENDC}{color}
                               {quote.get_quote()}
 '''
 
